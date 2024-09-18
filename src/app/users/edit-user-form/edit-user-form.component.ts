@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Output, } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/iuser';
 
@@ -9,30 +9,24 @@ import { IUser } from '../interfaces/iuser';
 })
 export class EditUserFormComponent {
 
-  user: IUser = {
-    
+  @Input() user: IUser = {
     id: 0,
     name: "",
     username: "",
     email: "",
-    phone:"",
-    website: "",
-
+    phone: "",
+    website: ""
   }
 
+  @Input() disabled: boolean = true
 
+  @Output() eventEmitter = new EventEmitter<IUser>()
 
   constructor(private _service: UserService){
-    this._service.get().subscribe(
-      response => this.user = response
-    )
   }
 
-  
-  
-
-  mostrar(): void{
-    console.log(this.user.name)
-    console.log(this.user)
+  enviar(): void{
+    this.eventEmitter.emit(this.user);
   }
+  
 }

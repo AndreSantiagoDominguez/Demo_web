@@ -12,6 +12,17 @@ export class UsersDashboardComponent {
 
   users: IUser[] = []
 
+  selectedUser: IUser = {
+    id: 0,
+    name: "",
+    username: "",
+    email: "",
+    phone: "",
+    website: ""
+  }
+
+  
+
   constructor(private _service: UserService){ 
 
       this._service.getAll().subscribe(
@@ -21,5 +32,18 @@ export class UsersDashboardComponent {
       )
 
   }
+
+  ngOnInit(): void {
+    this._service.getAll().subscribe(
+      response => this.users = response
+    )
+}
+
+displayedColumns: string[] = ['id', 'name', 'username', 'email', 'phone', 'website']
+
+addUser(user: IUser): void{
+  this.users.push({...user});
+  console.log(this.users);
+}
 
 }

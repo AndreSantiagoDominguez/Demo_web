@@ -22,3 +22,14 @@
         </tbody>
     </table>
 </div>
+
+
+<div class="bg-gray-800 border border-gray-700 rounded-lg p-2 mt-8 mb-8 max-w-max mx-auto">
+    <h1 class="text-center text-white">FORMULARIO DE USUARIOS</h1>
+  </div>
+  
+
+<app-edit-user-form 
+[user]="selectedUser" [disabled]="true"
+(eventEmitter)="addUser($event)"
+></app-edit-user-form>

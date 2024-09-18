@@ -1,0 +1,12 @@
+<div id="edit_form">
+    <form action="">
+        <div *ngIf="true">
+            <label for="name">ID</label>
+            <input type="text" name="id" id="id" disabled [value]="user.id">
+        </div>
+        <label for="name">NAME</label>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="user.name">
+    </form>
+
+    <button (click)="mostrar()">ACTIVAR</button>
+</div>
